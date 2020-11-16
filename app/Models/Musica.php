@@ -11,4 +11,26 @@ class Musica extends Model
 
     protected $primaryKey="id_musica";
     protected $table="musicas";
+
+
+    public function musicos(){
+        return $this->belongsTo(
+            'App\Models\Musico',
+            'id_musico'
+        );
+    }
+
+    public function albuns(){
+        return $this->hasMany(
+            'App\Models\Album',
+            'id_album'
+        );
+    }
+
+    public function genero(){
+        return $this->belongsTo(
+            'App\Models\Genero',
+            'id_genero'
+        );
+    }
 }

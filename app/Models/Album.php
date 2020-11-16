@@ -12,10 +12,24 @@ class Album extends Model
     protected $primaryKey="id_album";
     protected $table="albuns";
 
-    public function musico(){
+    public function musicos(){
         return $this->belongsTo(
             'App\Models\Musico',
             'id_musico'
+        );
+    }
+
+    public function generos(){
+        return $this->hasMany(
+            'App\Models\Genero',
+            'id_genero'
+        );
+    }
+
+    public function musicas(){
+        return $this->belongsTo(
+            'App\Models\Musica',
+            'id_album'
         );
     }
 }

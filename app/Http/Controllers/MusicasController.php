@@ -15,4 +15,14 @@ class MusicasController extends Controller
             'musicas' => $musicas
         ]);
     }
+
+    public function show(Request $req){
+        $idMusica = $req ->id;
+        
+        $musica = Musica::where('id_musica',$idMusica)->with(['musicos', 'genero', 'albuns'])->first();
+      
+        return view('musicas.show', [
+            'musica' =>$musica 
+        ]);
+    }
 }

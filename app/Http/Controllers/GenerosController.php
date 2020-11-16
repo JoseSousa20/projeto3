@@ -14,4 +14,14 @@ class GenerosController extends Controller
             'generos' => $generos
         ]);
     }
+
+    public function show(Request $req){
+        $idGenero = $req ->id;
+        
+        $genero = Genero::where('id_genero',$idGenero)->with(['albuns', 'musicas'])->first();
+
+        return view('generos.show', [
+            'generos' =>$genero 
+        ]);
+    }
 }

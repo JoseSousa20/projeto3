@@ -6,7 +6,7 @@
       <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
       <link rel="stylesheet" href="{{asset('css/all.min.css')}}">
     </head>
-    <body>
+    <body style="background-color: #c4c4c4">
        <h1 style="color: #fc03030">@yield('header')</h1>
        @yield('conteudo')
        <br>

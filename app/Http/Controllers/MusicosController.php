@@ -19,7 +19,7 @@ class MusicosController extends Controller
     public function show(Request $req){
         $idMusico = $req ->id;
         
-        $musico = Musico::where('id_musico',$idMusico)->with(['album', 'musica'])->first();
+        $musico = Musico::where('id_musico',$idMusico)->with(['albuns', 'musica'])->first();
 
         return view('musicos.show', [
             'musico' =>$musico 

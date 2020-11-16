@@ -9,6 +9,7 @@ Albuns:
 <ul>
 @foreach($albuns as $album)
 <li>
+<a style="color:#000000" href="{{route('albuns.show',['id'=>$album->id_album])}}">
 <h5>{{$album->titulo}}</h5>
 </li>
 @endforeach

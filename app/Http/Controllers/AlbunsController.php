@@ -19,7 +19,7 @@ class AlbunsController extends Controller
     public function show(Request $req){
         $idAlbum = $req ->id;
         
-        $album = Album::where('id_album',$idAlbum)->first();
+        $album = Album::where('id_album',$idAlbum)->with(['musicos', 'generos', 'musicas'])->first();
 
         return view('albuns.show', [
             'album' =>$album 

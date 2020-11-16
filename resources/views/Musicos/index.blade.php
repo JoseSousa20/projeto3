@@ -9,6 +9,7 @@ Musicos:
 <ul>
 @foreach($musicos as $musico)
 <li>
+<a style="color:#000000" href="{{route('musicos.show',['id'=>$musico->id_musico])}}">
 <h5>{{$musico->nome}}</h5>
 </li>
 @endforeach

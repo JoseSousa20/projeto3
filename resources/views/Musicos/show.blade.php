@@ -9,9 +9,9 @@
  <b>Nacionalidade: </b>{{$musico->nacionalidade}}<br>
  <b>Data de Nascimento; </b>{{$musico->data_nascimento}}<br>
  @foreach($musico->albuns as  $album)
-<li>{{$album->titulo}}<br></li>
-@endforeach
-@else
-<h1 style="color:#ff0000">ERRO</h1>
-@endif
+    <b>Album: </b>{{$album->titulo}}<br>
+ @endforeach
+ @foreach($musico->musica as $musica)
+    <b>Musicas: </b>{{$musica->titulo}}
+ @endforeach
 @endsection
