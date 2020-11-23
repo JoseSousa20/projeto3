@@ -9,9 +9,9 @@
  <b>Nacionalidade: </b>{{$musico->nacionalidade}}<br>
  <b>Data de Nascimento; </b>{{$musico->data_nascimento}}<br>
  @foreach($musico->albuns as  $album)
-    <b>Album: </b>{{$album->titulo}}<br>
+    <b>Album: </b><a style="color:#000000" href="{{route('albuns.show',['id'=>$album->id_album])}}">{{$album->titulo}}</a><br>
  @endforeach
  @foreach($musico->musica as $musica)
-    <b>Musicas: </b>{{$musica->titulo}}
+    <b>Musicas: </b><a style="color:#000000" href="{{route('musicas.show',['id'=>$musica->id_musica])}}">{{$musica->titulo}}</a>
  @endforeach
 @endsection
