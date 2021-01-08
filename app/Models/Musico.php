@@ -26,4 +26,11 @@ class Musico extends Model
         );
     }
 
+    protected $fillable = [
+        'nome',
+        'nacionalidade',
+        'data_nascimento',
+        'fotografia'
+    ];
+
 }

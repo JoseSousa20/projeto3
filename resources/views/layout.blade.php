@@ -9,21 +9,27 @@
     <body style="background-color: #c4c4c4">
        <h1 style="color: #fc03030">@yield('header')</h1>
        @yield('conteudo')
+       @if(session()->has('msg'))
+            <div class="alert alert-danger" role="alert">
+                {{session('msg')}}
+            </div>
+        @endif
+       <br>
        <br>
        <div class="container">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-2">
-                        <a href="{{route('musicos.index')}}"><i class="far fa-arrow-alt-circle-right"></i>Musicos</a>
+                        <a style="color:black" href="{{route('musicos.index')}}"><i class="far fa-arrow-alt-circle-right"></i>Musicos</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="{{route('musicas.index')}}"><i class="far fa-arrow-alt-circle-right"></i>Musicas</a>
+                        <a style="color:black" href="{{route('musicas.index')}}"><i class="far fa-arrow-alt-circle-right"></i>Musicas</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="{{route('albuns.index')}}"><i class="far fa-arrow-alt-circle-right"></i>Albuns</a>
+                        <a style="color:black" href="{{route('albuns.index')}}"><i class="far fa-arrow-alt-circle-right"></i>Albuns</a>
                     </div>
                     <div class="col-md-2">
-                        <a href="{{route('generos.index')}}"><i class="far fa-arrow-alt-circle-right"></i>Generos</a>
+                        <a style="color:black" href="{{route('generos.index')}}"><i class="far fa-arrow-alt-circle-right"></i>Generos</a>
                     </div>
                 </div>
             </div>

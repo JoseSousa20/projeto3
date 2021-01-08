@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 16-Nov-2020 às 16:57
+-- Generation Time: 08-Jan-2021 às 18:22
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.2
 
@@ -122,7 +122,9 @@ INSERT INTO `musicos` (`id_musico`, `nome`, `nacionalidade`, `data_nascimento`, 
 (1, 'Dillaz', 'Portuguesa', '1978-11-13 00:00:00', NULL, NULL, NULL),
 (2, 'Chico da Tina', 'Portuguesa', '1991-05-30 00:00:00', NULL, NULL, NULL),
 (3, 'Diogo Piçarra', 'Portuguesa', '1990-09-12 00:00:00', NULL, NULL, NULL),
-(4, 'ProfJam', 'Portuguesa', '1998-10-14 00:00:00', NULL, NULL, NULL);
+(4, 'ProfJam', 'Portuguesa', '1998-10-14 00:00:00', NULL, NULL, NULL),
+(5, 'Domingues', 'Portuguesa', '1995-11-14 00:00:00', NULL, '2021-01-08 16:43:53', '2021-01-08 16:43:53'),
+(7, 'x-tense', 'Portuguesa', '1988-06-16 00:00:00', NULL, '2021-01-08 16:46:30', '2021-01-08 16:46:30');
 
 --
 -- Indexes for dumped tables
@@ -178,7 +180,7 @@ ALTER TABLE `musicas`
 -- AUTO_INCREMENT for table `musicos`
 --
 ALTER TABLE `musicos`
-  MODIFY `id_musico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_musico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

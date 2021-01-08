@@ -25,4 +25,9 @@ class Genero extends Model
             'id_genero'
         );
     }
+
+    protected $fillable = [
+        'designacao',
+        'observacoes'
+    ];
 }

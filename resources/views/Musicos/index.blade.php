@@ -13,4 +13,6 @@ Musicos:
 <h5>{{$musico->nome}}</h5>
 </li>
 @endforeach
+<br>
+<a href="{{route('musicos.create')}}" class="btn btn-secondary">Adicionar Musico</a>
 @endsection

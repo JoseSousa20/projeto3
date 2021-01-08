@@ -33,4 +33,7 @@ class Musica extends Model
             'id_genero'
         );
     }
+    protected $fillable = [
+        'titulo'
+    ];
 }

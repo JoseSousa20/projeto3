@@ -32,4 +32,10 @@ class Album extends Model
             'id_album'
         );
     }
+
+    protected $fillable = [
+        'titulo',
+        'data_lancamento',
+        'observacoes'
+    ];
 }
