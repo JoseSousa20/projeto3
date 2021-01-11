@@ -13,4 +13,5 @@ Musicas:
 <h5>{{$musica->titulo}}</h5>
 </li>
 @endforeach
+<a href="{{route('musicas.create')}}" class="btn btn-secondary">Adicionar Musica</a>
 @endsection

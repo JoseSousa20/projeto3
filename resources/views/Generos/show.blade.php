@@ -5,5 +5,6 @@
 @endsection
 @section('conteudo')
 <ul>
- <b>Designacao: </b>{{$genero->designacao}}<br>
+ <b>Designacao: </b>{{$generos->designacao}}<br>
+ <b>Observações: </b>{{$generos->observacaoes}}<br>
 @endsection

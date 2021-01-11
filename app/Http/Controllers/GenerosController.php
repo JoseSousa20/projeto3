@@ -38,14 +38,14 @@ class GenerosController extends Controller
 
     public function store(Request $req){
         $novoGenero = $req -> validate([
-            'desinacao'=>['required','min:3','max:100'],
+            'designacao'=>['required','min:3','max:100'],
             'observacoes'=>['nullable','min:3','max:100']
         ]);
         $albuns = $req->id_album;
         $musicas = $req->id_musica;
         $genero = Genero::create($novoGenero);
 
-        return redirect()->route('genero.show',[
+        return redirect()->route('generos.show',[
             'id' => $genero->id_genero
         ]);
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 08-Jan-2021 às 18:22
+-- Generation Time: 11-Jan-2021 às 18:27
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.2
 
@@ -47,7 +47,8 @@ INSERT INTO `albuns` (`id_album`, `titulo`, `id_genero`, `id_musico`, `data_lanc
 (1, 'Reflexo', 1, 1, '2019-10-05', NULL, NULL, NULL),
 (2, 'Trapalhadas', 1, 2, '2019-04-09', NULL, NULL, NULL),
 (3, 'Espelho', 3, 3, NULL, NULL, NULL, NULL),
-(4, 'System', 1, 4, NULL, NULL, NULL, NULL);
+(4, 'System', 1, 4, NULL, NULL, NULL, NULL),
+(5, 'Rosa Dragão', 1, 7, '2019-11-06', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -70,7 +71,8 @@ CREATE TABLE `generos` (
 INSERT INTO `generos` (`id_genero`, `designacao`, `observacoes`, `created_at`, `updated_at`) VALUES
 (1, 'RAP', NULL, NULL, NULL),
 (2, 'ROCK', NULL, NULL, NULL),
-(3, 'HIPHOP', NULL, NULL, NULL);
+(3, 'HIPHOP', NULL, NULL, NULL),
+(4, 'Reggie', NULL, '2021-01-11 16:10:14', '2021-01-11 16:10:14');
 
 -- --------------------------------------------------------
 
@@ -126,6 +128,23 @@ INSERT INTO `musicos` (`id_musico`, `nome`, `nacionalidade`, `data_nascimento`, 
 (5, 'Domingues', 'Portuguesa', '1995-11-14 00:00:00', NULL, '2021-01-08 16:43:53', '2021-01-08 16:43:53'),
 (7, 'x-tense', 'Portuguesa', '1988-06-16 00:00:00', NULL, '2021-01-08 16:46:30', '2021-01-08 16:46:30');
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -162,13 +181,13 @@ ALTER TABLE `musicos`
 -- AUTO_INCREMENT for table `albuns`
 --
 ALTER TABLE `albuns`
-  MODIFY `id_album` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_album` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `generos`
 --
 ALTER TABLE `generos`
-  MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `musicas`
