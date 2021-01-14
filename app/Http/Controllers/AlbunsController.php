@@ -31,11 +31,9 @@ class AlbunsController extends Controller
 
     public function create(){
         $musicos = Musico::all();
-        $musicas = Musica::all();
         $generos = Genero::all();
         return view('albuns.create',[
             'musicos'=>$musicos,
-            'musicas'=>$musicas,
             'generos'=>$generos
         ]);
     }
@@ -46,13 +44,60 @@ class AlbunsController extends Controller
             'data_lancamento'=>['required','date'],
             'observacoes'=>['nullable','min:3','max:100']
         ]);
-        $novoAlbum['id_musica'] = $req->id_musica;
         $novoAlbum['id_musico'] = $req->id_musico;
         $novoAlbum['id_genero'] = $req->id_genero;
-        $album = Alnum::create($novoAlbum);
+        $album = Album::create($novoAlbum);
        
         return redirect()->route('albuns.show',[
             'id' => $album->id_album
         ]);
+    }
+
+
+    public function edit(Request $req){
+        $editAlbuns = $req->id;
+        $album = Album::where('id_album', $editAlbuns)->with(['musicos', 'generos', 'musicas'])->first();
+        $musicos = Musico::all();
+        $generos = Genero::all();
+        return view('albuns.edit',[
+            'album'=>$album,
+            'musicos'=>$musicos,
+            'generos'=>$generos
+        ]);
+    }
+
+    public function update(Request $req){
+        $editAlbuns = $req ->id;
+        $album = Album::where('id_album', $editAlbuns)->with(['musicos', 'generos', 'musicas'])->first();
+        $updateAlbum = $req -> validate([
+            'titulo'=>['required','min:3','max:100'],
+            'data_lancamento'=>['required','date'],
+            'observacoes'=>['nullable','min:3','max:100']
+        ]);
+        $album->update($updateAlbum);
+
+        return redirect()->route('albuns.show',[
+            'id' => $album->id_album
+        ]);
+    }
+
+    public function delete(Request $req){
+        $idAlbum = $req ->id;
+        $album = Album::where('id_album',$idAlbum)->with(['musicos', 'generos', 'musicas'])->first();
+    
+        return view('albuns.delete',[
+            'album'=>$album
+        ]);
+        
+    }
+
+    public function destroy(Request $req){
+        $idAlbum= $req ->id;
+        $album = Album::findOrfail($idAlbum);
+        
+        $album->delete();
+
+        return redirect()->route('albuns.index')->with('msg','Album eliminado!');
+
     }
 }

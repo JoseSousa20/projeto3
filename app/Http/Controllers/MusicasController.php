@@ -53,4 +53,55 @@ class MusicasController extends Controller
             'id' => $musica->id_musica
         ]);
     }
+
+
+    public function edit(Request $req){
+        $editMusica = $req->id;
+        $musica = Musica::where('id_musica',$editMusica)->with(['musicos', 'genero', 'albuns'])->first();
+
+        $albuns = Album::all();
+        $musicos = Musico::all();
+        $generos = Genero::all();
+
+        return view('musicas.edit',[
+            'musica'=>$musica,
+            'albuns'=>$albuns,
+            'musicos'=>$musicos,
+            'generos'=>$generos
+        ]);
+    }
+
+    public function update(Request $req){
+        $editMusica = $req ->id;
+        $musica = Musica::where('id_musica',$editMusica)->with(['musicos', 'genero', 'albuns'])->first();
+        $updateMusica = $req -> validate([
+            'titulo'=>['required','min:3','max:100'],
+        ]);
+        $musica->update($updateMusica);
+
+        return redirect()->route('musicas.show',[
+            'id' => $musica->id_musica
+        ]);
+    }
+
+
+    public function delete(Request $req){
+        $idMusica = $req ->id;
+        $musica = Musica::where('id_musica',$idMusica)->with(['musicos', 'genero', 'albuns'])->first();
+    
+        return view('musicas.delete',[
+            'musica'=>$musica
+        ]);
+        
+    }
+
+    public function destroy(Request $req){
+        $idMusica = $req ->id;
+        $musica = Musica::findOrfail($idMusica);
+        
+        $musica->delete();
+
+        return redirect()->route('musicas.index')->with('msg','Musica eliminada!');
+
+    }
 }

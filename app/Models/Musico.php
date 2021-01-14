@@ -33,4 +33,8 @@ class Musico extends Model
         'fotografia'
     ];
 
+    protected $dates = [
+        'data_nascimento'
+    ];
+
 }

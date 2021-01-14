@@ -1,13 +1,14 @@
 @extends('layout')
-<form action="{{route('albuns.store')}}" enctype="multipart/form-data" method="post">
+<form action="{{route('albuns.store', ['id'=>$album->id_album])}}" enctype="multipart/form-data" method="post">
 @csrf
+@method('patch')
 
-Titulo: (<b sytle="color:red">*</b>) <input type="text" name="titulo" value="{{old('titulo')}}"><br><br>
+Titulo: (<b sytle="color:red">*</b>) <input type="text" name="titulo" value="{{$album->titulo}}"><br><br>
 @if($errors->has('titulo'))
 <b style="color:red">Deverá ter entre 3 e 100 caracteres</b><br>
 @endif
 
-Data de Lançamento: (<b sytle="color:red">*</b>) <input type="date" name="data_lancamento" value="{{old('data_lancamento')}}"><br><br>
+Data de Lançamento: (<b sytle="color:red">*</b>) <input type="date" name="data_lancamento" value="{{$album->data_lancamento->format('Y-m-d')}}"><br><br>
 @if($errors->has('data_lancamento'))
 <b style="color:red">Formato de data incorreto(DD-MM-AAAA)</b><br>
 @endif
@@ -39,7 +40,7 @@ Genero: (<b sytle="color:red">*</b>)<br>
 @endif
 
 
-Observações: <input type="text" name="observacoes" value="{{old('observacoes')}}"><br><br>
+Observações: <input type="text" name="observacoes" value="{{$album->observacoes}}"><br><br>
 @if($errors->has('observacoes'))
 <b style="color:red">Deverá ter entre 3 e 100 caracteres</b><br>
 @endif

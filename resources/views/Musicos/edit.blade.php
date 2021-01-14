@@ -1,6 +1,9 @@
 @extends('layout')
 <form action="{{route('musicos.update', ['id'=>$musico->id_musico])}}" enctype="multipart/form-data" method="post">
 @csrf
+@method('patch')
+
+
 Nome: (<b sytle="color:red">*</b>) <input type="text" name="nome" value="{{$musico->nome}}"><br><br>
 @if($errors->has('nome'))
 <b style="color:red">Deverá ter entre 3 e 100 caracteres</b><br>
@@ -11,7 +14,7 @@ Nacionalidade: (<b sytle="color:red">*</b>) <input type="text" name="nacionalida
 <b style="color:red">Deverá ter entre 3 e 100 caracteres</b><br>
 @endif
 
-Data de Nascimento: (<b sytle="color:red">*</b>) <input type="date" name="data_nascimento" value="{{$musico->data_nascimento}}"><br><br>
+Data de Nascimento: (<b sytle="color:red">*</b>) <input type="date" name="data_nascimento" value="{{$musico->data_nascimento->format('Y-m-d')}}"><br><br>
 @if($errors->has('data_nascimento'))
 <b style="color:red">Formato de data incorreto(DD-MM-AAAA)</b><br>
 @endif

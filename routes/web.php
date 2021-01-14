@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', 'App\Http\Controllers\MusicosController@inicial')->name('inicial');
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
 //Routes Musicos
@@ -61,7 +63,17 @@ Route::get('/musicas/create', 'App\Http\Controllers\MusicasController@create')
 Route::post('/musicas/store','App\Http\Controllers\MusicasController@store')
     ->name('musicas.store');
 
+Route::get('/musicas/{id}/edit', 'App\Http\Controllers\MusicasController@edit')
+    ->name('musicas.edit');
 
+Route::patch('/musicas/{id}', 'App\Http\Controllers\MusicasController@update')
+    ->name('musicas.update');
+
+Route::get('/musicas/{id}/delete', 'App\Http\Controllers\MusicasController@delete')
+    ->name('musicas.delete');
+
+Route::delete('/musicas', 'App\Http\Controllers\MusicasController@destroy')
+    ->name('musicas.destroy');
 
 
 
@@ -80,8 +92,17 @@ Route::get('/albuns/create', 'App\Http\Controllers\AlbunsController@create')
 Route::post('/albuns/store','App\Http\Controllers\AlbunsController@store')
     ->name('albuns.store');
 
+Route::get('/albuns/{id}/edit', 'App\Http\Controllers\AlbunsController@edit')
+    ->name('albuns.edit');
 
+Route::patch('/albuns/{id}', 'App\Http\Controllers\AlbunsController@update')
+    ->name('albuns.update');
 
+Route::get('/albuns/{id}/delete', 'App\Http\Controllers\AlbunsController@delete')
+    ->name('albuns.delete');
+
+Route::delete('/albuns', 'App\Http\Controllers\AlbunsController@destroy')
+    ->name('albuns.destroy');
 
 
 
@@ -102,7 +123,17 @@ Route::post('/generos/store','App\Http\Controllers\GenerosController@store')
     ->name('generos.store');
 
 
+Route::get('/generos/{id}/edit', 'App\Http\Controllers\GenerosController@edit')
+    ->name('generos.edit');
+
+Route::patch('/generos/{id}', 'App\Http\Controllers\GenerosController@update')
+    ->name('generos.update');
 
 
+Route::get('/generos/{id}/delete', 'App\Http\Controllers\GenerosController@delete')
+    ->name('generos.delete');
+
+Route::delete('/generos', 'App\Http\Controllers\GenerosController@destroy')
+    ->name('generos.destroy');
 
 

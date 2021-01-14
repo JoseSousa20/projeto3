@@ -6,5 +6,7 @@
 @section('conteudo')
 <ul>
  <b>Designacao: </b>{{$generos->designacao}}<br>
- <b>Observações: </b>{{$generos->observacaoes}}<br>
+ <b>Observações: </b>{{$generos->observacoes}}<br>
+ <a href="{{route('generos.edit', ['id'=>$generos->id_genero])}}" class="btn btn-secondary">Editar Genero</a>
+ <a href="{{route('generos.delete', ['id'=>$generos->id_genero])}}" class="btn btn-secondary">Eliminar Genero</a>
 @endsection

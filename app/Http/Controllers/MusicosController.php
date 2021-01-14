@@ -10,9 +10,6 @@ use App\Models\Musica;
 class MusicosController extends Controller
 {
     //
-    public function inicial(){
-        return view('welcome');
-    }
 
     public function index(){
         $musicos = Musico::all();
@@ -59,7 +56,7 @@ class MusicosController extends Controller
     public function edit(Request $req){
         $editMusico = $req->id;
         $musico = Musico::where('id_musico',$editMusico)->with(['albuns', 'musica'])->first();
-
+        
         return view('musicos.edit',[
             'musico'=>$musico
         ]);
@@ -79,5 +76,26 @@ class MusicosController extends Controller
         return redirect()->route('musicos.show',[
             'id' => $musico->id_musico
         ]);
+    }
+
+
+    public function delete(Request $req){
+        $idMusico = $req ->id;
+        $musico = Musico::where('id_musico',$idMusico)->with(['albuns', 'musica'])->first();
+    
+        return view('musicos.delete',[
+            'musico'=>$musico
+        ]);
+        
+    }
+
+    public function destroy(Request $req){
+        $idMusico = $req ->id;
+        $musico = Musico::findOrfail($idMusico);
+        
+        $musico->delete();
+
+        return redirect()->route('musicos.index')->with('msg','Musico eliminado!');
+
     }
 }

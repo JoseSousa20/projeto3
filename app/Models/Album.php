@@ -37,8 +37,11 @@ class Album extends Model
         'titulo',
         'data_lancamento',
         'observacoes',
-        'id_musica',
         'id_musico',
         'id_genero'
+    ];
+
+    protected $dates = [
+        'data_lancamento'
     ];
 }
