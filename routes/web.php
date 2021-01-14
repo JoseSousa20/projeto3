@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/', 'App\Http\Controllers\MusicosController@inicial')->name('inicial');
+
+
 //Routes Musicos
 Route::get('/musicos' , 'App\Http\Controllers\MusicosController@index')
     ->name('musicos.index');
@@ -69,6 +73,12 @@ Route::get('/albuns' , 'App\Http\Controllers\AlbunsController@index')
 
 Route::get('/albuns/{id}/show' , 'App\Http\Controllers\AlbunsController@show')
     ->name('albuns.show');
+
+Route::get('/albuns/create', 'App\Http\Controllers\AlbunsController@create')
+    ->name('albuns.create');
+
+Route::post('/albuns/store','App\Http\Controllers\AlbunsController@store')
+    ->name('albuns.store');
 
 
 

@@ -21,7 +21,7 @@ class Musica extends Model
     }
 
     public function albuns(){
-        return $this->hasMany(
+        return $this->belongsTo(
             'App\Models\Album',
             'id_album'
         );
@@ -34,6 +34,9 @@ class Musica extends Model
         );
     }
     protected $fillable = [
-        'titulo'
+        'titulo',
+        'id_genero',
+        'id_musico',
+        'id_album'
     ];
 }

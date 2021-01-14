@@ -13,4 +13,5 @@ Albuns:
 <h5>{{$album->titulo}}</h5>
 </li>
 @endforeach
+<a href="{{route('albuns.create')}}" class="btn btn-secondary">Adicionar Album</a>
 @endsection

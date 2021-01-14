@@ -10,6 +10,9 @@ use App\Models\Musica;
 class MusicosController extends Controller
 {
     //
+    public function inicial(){
+        return view('welcome');
+    }
 
     public function index(){
         $musicos = Musico::all();

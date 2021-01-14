@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 11-Jan-2021 às 18:27
+-- Generation Time: 14-Jan-2021 às 11:20
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.2
 
@@ -98,7 +98,8 @@ INSERT INTO `musicas` (`id_musica`, `titulo`, `id_musico`, `id_album`, `id_gener
 (1, 'Galileu', 1, 1, 1, NULL, NULL),
 (2, 'Resort', 2, 2, 1, NULL, NULL),
 (3, 'Paraiso', 3, 3, 3, NULL, NULL),
-(4, 'Tribunal', 4, 4, 1, NULL, NULL);
+(4, 'Tribunal', 4, 4, 1, NULL, NULL),
+(5, 'Bolero', 7, 5, 1, '2021-01-14 10:04:29', '2021-01-14 10:04:29');
 
 -- --------------------------------------------------------
 
@@ -193,7 +194,7 @@ ALTER TABLE `generos`
 -- AUTO_INCREMENT for table `musicas`
 --
 ALTER TABLE `musicas`
-  MODIFY `id_musica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_musica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `musicos`

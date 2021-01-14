@@ -23,7 +23,7 @@ class MusicasController extends Controller
         $idMusica = $req ->id;
         
         $musica = Musica::where('id_musica',$idMusica)->with(['musicos', 'genero', 'albuns'])->first();
-      
+       
         return view('musicas.show', [
             'musica' =>$musica 
         ]);
@@ -48,7 +48,7 @@ class MusicasController extends Controller
         $novaMusica['id_musico'] = $req->id_musico;
         $novaMusica['id_genero'] = $req->id_genero;
         $musica = Musica::create($novaMusica);
-
+       
         return redirect()->route('musicas.show',[
             'id' => $musica->id_musica
         ]);
