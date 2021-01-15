@@ -16,24 +16,49 @@
         @endif
        <br>
        <br>
-       <div class="container">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-2">
-                        <a style="color:black" href="{{route('musicos.index')}}"><i class="far fa-arrow-alt-circle-right"></i>Musicos</a>
-                    </div>
-                    <div class="col-md-2">
-                        <a style="color:black" href="{{route('musicas.index')}}"><i class="far fa-arrow-alt-circle-right"></i>Musicas</a>
-                    </div>
-                    <div class="col-md-2">
-                        <a style="color:black" href="{{route('albuns.index')}}"><i class="far fa-arrow-alt-circle-right"></i>Albuns</a>
-                    </div>
-                    <div class="col-md-2">
-                        <a style="color:black" href="{{route('generos.index')}}"><i class="far fa-arrow-alt-circle-right"></i>Generos</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+       <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="{{route('musicos.index')}}">Musicos</a>
+      <a class="nav-item nav-link" href="{{route('musicas.index')}}">Musicas</a>
+      <a class="nav-item nav-link" href="{{route('generos.index')}}">Generos</a>
+      <a class="nav-item nav-link" href="{{route('albuns.index')}}">Albuns</a>
+      <a class="nav-item nav-link"></a>
+      <a class="nav-item nav-link">|</a>
+      <a class="nav-item nav-link"></a>
+      @guest
+        @if (Route::has('login'))
+          <li class="nav-item">
+              <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+          </li>
+        @endif
+                            
+        @if (Route::has('register'))
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+          </li>
+        @endif
+        @else
+          <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+              {{ Auth::user()->name }}
+            </a>
+
+             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+              </a>
+
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                 @csrf
+              </form>
+             </div>
+          </li>
+      @endguest
+    </div>
+  </div>
+</nav>
         <script src="{{asset('js/jquery.min.js')}}"></script>
         <script src="{{asset('js/bootstrap.min.js')}}"></script>
         <script src="{{asset('js/all.min.js')}}"></script>

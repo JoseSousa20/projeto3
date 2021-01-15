@@ -27,22 +27,22 @@ Route::get('/musicos/{id}/show' , 'App\Http\Controllers\MusicosController@show')
     ->name('musicos.show');
 
 Route::get('/musicos/create', 'App\Http\Controllers\MusicosController@create')
-    ->name('musicos.create');
+    ->name('musicos.create')->middleware('auth');
 
 Route::post('/musicos/store','App\Http\Controllers\MusicosController@store')
-    ->name('musicos.store');
+    ->name('musicos.store')->middleware('auth');
 
 Route::get('/musicos/{id}/edit', 'App\Http\Controllers\MusicosController@edit')
-    ->name('musicos.edit');
+    ->name('musicos.edit')->middleware('auth');
 
 Route::patch('/musicos/{id}', 'App\Http\Controllers\MusicosController@update')
-    ->name('musicos.update');
+    ->name('musicos.update')->middleware('auth');
 
 Route::get('/musicos/{id}/delete', 'App\Http\Controllers\MusicosController@delete')
-    ->name('musicos.delete');
+    ->name('musicos.delete')->middleware('auth');
 
 Route::delete('/musicos', 'App\Http\Controllers\MusicosController@destroy')
-    ->name('musicos.destroy');
+    ->name('musicos.destroy')->middleware('auth');
 
 
 
@@ -58,22 +58,22 @@ Route::get('/musicas/{id}/show' , 'App\Http\Controllers\MusicasController@show')
     ->name('musicas.show');
 
 Route::get('/musicas/create', 'App\Http\Controllers\MusicasController@create')
-    ->name('musicas.create');
+    ->name('musicas.create')->middleware('auth');
 
 Route::post('/musicas/store','App\Http\Controllers\MusicasController@store')
-    ->name('musicas.store');
+    ->name('musicas.store')->middleware('auth');
 
 Route::get('/musicas/{id}/edit', 'App\Http\Controllers\MusicasController@edit')
-    ->name('musicas.edit');
+    ->name('musicas.edit')->middleware('auth');
 
 Route::patch('/musicas/{id}', 'App\Http\Controllers\MusicasController@update')
-    ->name('musicas.update');
+    ->name('musicas.update')->middleware('auth');
 
 Route::get('/musicas/{id}/delete', 'App\Http\Controllers\MusicasController@delete')
-    ->name('musicas.delete');
+    ->name('musicas.delete')->middleware('auth');
 
 Route::delete('/musicas', 'App\Http\Controllers\MusicasController@destroy')
-    ->name('musicas.destroy');
+    ->name('musicas.destroy')->middleware('auth');
 
 
 
@@ -87,22 +87,22 @@ Route::get('/albuns/{id}/show' , 'App\Http\Controllers\AlbunsController@show')
     ->name('albuns.show');
 
 Route::get('/albuns/create', 'App\Http\Controllers\AlbunsController@create')
-    ->name('albuns.create');
+    ->name('albuns.create')->middleware('auth');
 
 Route::post('/albuns/store','App\Http\Controllers\AlbunsController@store')
-    ->name('albuns.store');
+    ->name('albuns.store')->middleware('auth');
 
 Route::get('/albuns/{id}/edit', 'App\Http\Controllers\AlbunsController@edit')
-    ->name('albuns.edit');
+    ->name('albuns.edit')->middleware('auth');
 
 Route::patch('/albuns/{id}', 'App\Http\Controllers\AlbunsController@update')
-    ->name('albuns.update');
+    ->name('albuns.update')->middleware('auth');
 
 Route::get('/albuns/{id}/delete', 'App\Http\Controllers\AlbunsController@delete')
-    ->name('albuns.delete');
+    ->name('albuns.delete')->middleware('auth');
 
 Route::delete('/albuns', 'App\Http\Controllers\AlbunsController@destroy')
-    ->name('albuns.destroy');
+    ->name('albuns.destroy')->middleware('auth');
 
 
 
@@ -117,23 +117,27 @@ Route::get('/generos/{id}/show' , 'App\Http\Controllers\GenerosController@show')
     ->name('generos.show');
 
 Route::get('/generos/create', 'App\Http\Controllers\GenerosController@create')
-    ->name('generos.create');
+    ->name('generos.create')->middleware('auth');
 
 Route::post('/generos/store','App\Http\Controllers\GenerosController@store')
-    ->name('generos.store');
+    ->name('generos.store')->middleware('auth');
 
 
 Route::get('/generos/{id}/edit', 'App\Http\Controllers\GenerosController@edit')
-    ->name('generos.edit');
+    ->name('generos.edit')->middleware('auth');
 
 Route::patch('/generos/{id}', 'App\Http\Controllers\GenerosController@update')
-    ->name('generos.update');
+    ->name('generos.update'->middleware('auth'));
 
 
 Route::get('/generos/{id}/delete', 'App\Http\Controllers\GenerosController@delete')
-    ->name('generos.delete');
+    ->name('generos.delete')->middleware('auth');
 
 Route::delete('/generos', 'App\Http\Controllers\GenerosController@destroy')
-    ->name('generos.destroy');
+    ->name('generos.destroy')->middleware('auth');
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

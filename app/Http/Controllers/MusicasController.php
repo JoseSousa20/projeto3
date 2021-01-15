@@ -58,17 +58,39 @@ class MusicasController extends Controller
     public function edit(Request $req){
         $editMusica = $req->id;
         $musica = Musica::where('id_musica',$editMusica)->with(['musicos', 'genero', 'albuns'])->first();
-
-        $albuns = Album::all();
-        $musicos = Musico::all();
-        $generos = Genero::all();
-
-        return view('musicas.edit',[
-            'musica'=>$musica,
-            'albuns'=>$albuns,
-            'musicos'=>$musicos,
-            'generos'=>$generos
-        ]);
+        if(Gate::allows('atualizar-musica',$musica)|| Gate::allows('admin')){
+            $albuns = Album::all();
+            $musicos = Musico::all();
+            $generos = Genero::all();
+            if(isset($musica->user->id_user)){
+                if(Auth()->check()){
+                    if(Auth::user()->id == $musica->id_user){
+                        return view('musicas.edit',[
+                            'musica'=>$musica,
+                            'albuns'=>$albuns,
+                            'musicos'=>$musicos,
+                            'generos'=>$generos
+                        ]); 
+                    }
+                    else{
+                        return view('index');
+                    }
+                }
+                
+            }
+            else{
+                return view('musicas.edit',[
+                    'musica'=>$musica,
+                    'albuns'=>$albuns,
+                    'musicos'=>$musicos,
+                    'generos'=>$generos
+                ]); 
+            }
+        }
+        else{
+            return redirect()->route('musicas.index')
+            ->with('msg'.'Não tem permissão para aceder a área pretendida');
+        }  
     }
 
     public function update(Request $req){

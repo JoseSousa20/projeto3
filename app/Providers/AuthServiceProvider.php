@@ -25,6 +25,17 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::degine('atualizar-musico', function($user,$musico){
+            return $user->id==$musico->id_user;
+        });
+        Gate::degine('atualizar-musica', function($user,$musica){
+            return $user->id==$musica->id_user;
+        });
+        Gate::degine('atualizar-album', function($user,$album){
+            return $user->id==$album->id_user;
+        });
+        Gate::degine('atualizar-genero', function($user,$genero){
+            return $user->id==$genero->id_user;
+        });
     }
 }
