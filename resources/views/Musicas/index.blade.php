@@ -13,5 +13,7 @@ Musicas:
 <h5>{{$musica->titulo}}</h5>
 </li>
 @endforeach
+@if(auth()->check())
 <a href="{{route('musicas.create')}}" class="btn btn-secondary">Adicionar Musica</a>
+@endif
 @endsection

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 15-Jan-2021 às 18:23
--- Versão do servidor: 10.1.38-MariaDB
--- versão do PHP: 7.3.2
+-- Tempo de geração: 17-Jan-2021 às 18:20
+-- Versão do servidor: 10.4.17-MariaDB
+-- versão do PHP: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `projeto3`
+-- Banco de dados: `projeto3`
 --
 
 -- --------------------------------------------------------
@@ -48,7 +47,8 @@ INSERT INTO `albuns` (`id_album`, `titulo`, `id_genero`, `id_musico`, `data_lanc
 (2, 'Trapalhadas', 1, 2, '2019-04-09', NULL, NULL, NULL),
 (3, 'Espelho', 3, 3, NULL, NULL, NULL, NULL),
 (4, 'System', 1, 4, NULL, NULL, NULL, NULL),
-(5, 'Rosa Dragão', 1, 7, '2019-11-06', NULL, NULL, NULL);
+(5, 'Rosa Dragão', 1, 7, '2019-11-06', NULL, NULL, NULL),
+(6, 'Fica', 1, 5, '2021-01-05', NULL, '2021-01-17 15:39:45', '2021-01-17 15:39:45');
 
 -- --------------------------------------------------------
 
@@ -111,7 +111,8 @@ INSERT INTO `musicas` (`id_musica`, `titulo`, `id_musico`, `id_album`, `id_gener
 (2, 'Resort', 2, 2, 1, NULL, NULL),
 (3, 'Paraiso', 3, 3, 3, NULL, NULL),
 (4, 'Tribunal', 4, 4, 1, NULL, NULL),
-(5, 'Bolero', 7, 5, 1, '2021-01-14 10:04:29', '2021-01-14 10:04:29');
+(5, 'Bolero', 7, 5, 1, '2021-01-14 10:04:29', '2021-01-14 10:04:29'),
+(16, 'Romance de cinema', 5, 6, 1, '2021-01-17 15:40:01', '2021-01-17 15:40:01');
 
 -- --------------------------------------------------------
 
@@ -138,7 +139,7 @@ INSERT INTO `musicos` (`id_musico`, `nome`, `nacionalidade`, `data_nascimento`, 
 (2, 'Chico da Tina', 'Portuguesa', '1991-05-30 00:00:00', NULL, NULL, NULL),
 (3, 'Diogo Piçarra', 'Portuguesa', '1990-09-12 00:00:00', NULL, NULL, NULL),
 (4, 'ProfJam', 'Portuguesa', '1998-10-14 00:00:00', NULL, NULL, NULL),
-(5, 'Domingues', 'Portuguesa', '1995-11-14 00:00:00', NULL, '2021-01-08 16:43:53', '2021-01-08 16:43:53'),
+(5, 'Domingues', 'Portuguesa', '1995-11-14 00:00:00', '1610904044_unnamed.jpg', '2021-01-17 17:20:44', '2021-01-08 16:43:53'),
 (7, 'x-tense', 'Portuguesa', '1988-06-16 00:00:00', NULL, '2021-01-08 16:46:30', '2021-01-08 16:46:30');
 
 -- --------------------------------------------------------
@@ -164,87 +165,88 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `tipo_user`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'José Sousa', 'sousaze517@gmail.com', NULL, '$2y$10$/ckU2MrPgtOER1Zw3A3bienlhB3yF9fp2sJ52D5/MzxH6wsMEvx.i', 'normal', NULL, '2021-01-15 16:22:53', '2021-01-15 16:22:53');
+(1, 'José Sousa', 'sousaze517@gmail.com', NULL, '$2y$10$/ckU2MrPgtOER1Zw3A3bienlhB3yF9fp2sJ52D5/MzxH6wsMEvx.i', 'admin', NULL, '2021-01-15 16:22:53', '2021-01-15 16:22:53'),
+(2, 'Utilizador2', 'utilizador2@gmail.com', NULL, '$2y$10$KDwfqZ346o5eCTSko56Bq.buVB2KmfAtPbSVWeuolU.I3wJ1h8UGi', 'normal', NULL, '2021-01-17 15:45:58', '2021-01-17 15:45:58');
 
 --
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `albuns`
+-- Índices para tabela `albuns`
 --
 ALTER TABLE `albuns`
   ADD PRIMARY KEY (`id_album`);
 
 --
--- Indexes for table `generos`
+-- Índices para tabela `generos`
 --
 ALTER TABLE `generos`
   ADD PRIMARY KEY (`id_genero`);
 
 --
--- Indexes for table `migrations`
+-- Índices para tabela `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `musicas`
+-- Índices para tabela `musicas`
 --
 ALTER TABLE `musicas`
   ADD PRIMARY KEY (`id_musica`);
 
 --
--- Indexes for table `musicos`
+-- Índices para tabela `musicos`
 --
 ALTER TABLE `musicos`
   ADD PRIMARY KEY (`id_musico`);
 
 --
--- Indexes for table `users`
+-- Índices para tabela `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `albuns`
+-- AUTO_INCREMENT de tabela `albuns`
 --
 ALTER TABLE `albuns`
-  MODIFY `id_album` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_album` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `generos`
+-- AUTO_INCREMENT de tabela `generos`
 --
 ALTER TABLE `generos`
   MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT de tabela `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `musicas`
+-- AUTO_INCREMENT de tabela `musicas`
 --
 ALTER TABLE `musicas`
-  MODIFY `id_musica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_musica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `musicos`
+-- AUTO_INCREMENT de tabela `musicos`
 --
 ALTER TABLE `musicos`
   MODIFY `id_musico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

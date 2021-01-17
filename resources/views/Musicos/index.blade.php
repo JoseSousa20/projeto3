@@ -14,5 +14,7 @@ Musicos:
 </li>
 @endforeach
 <br>
+@if(auth()->check())
 <a href="{{route('musicos.create')}}" class="btn btn-secondary">Adicionar Musico</a>
+@endif
 @endsection

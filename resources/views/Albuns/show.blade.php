@@ -12,6 +12,8 @@
     <b>Genero: </b>{{$genero->designacao}}
  @endforeach
  <b>Observações: </b>{{$album->observacoes}}<br>
+ @if(auth()->check())
  <a href="{{route('albuns.edit', ['id'=>$album->id_album])}}" class="btn btn-secondary">Editar Album</a>
  <a href="{{route('albuns.delete', ['id'=>$album->id_album])}}" class="btn btn-secondary">Eliminar Album</a>
+ @endif
 @endsection

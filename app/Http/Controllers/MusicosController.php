@@ -47,6 +47,15 @@ class MusicosController extends Controller
             'data_nascimento'=>['required','date'],
             'fotografia'=>['nullable','image','max:2000'],
         ]);
+        if($req->hasFile('fotografia')){
+            $nomeFotografia = $req->file('fotografia')->getClientOriginalName();
+
+            $nomeFotografia= time().'_'.$nomeFotografia;
+            $guardarFotografia = $req->file('fotgrafia')->storeAs('imagens/musicos',$nomeFotografia);
+
+            $updateMusico['fotografia']=$nomeFotografia;
+        }
+
         if (Auth::check()){
             $userAtual = Auth::user()->id;
             $novoMusico['id_user']=$userAtual;
@@ -80,14 +89,29 @@ class MusicosController extends Controller
     public function update(Request $req){
         $idMusico = $req ->id;
         $musico = Musico::where('id_musico',$idMusico)->with(['albuns', 'musica'])->first();
+        $fotografiaAntiga = $musico->fotografia;
         if(Gate::allows('admin')){
             $updateMusico = $req -> validate([
                 'nome'=>['required','min:3','max:100'],
                 'nacionalidade'=>['required','min:3','max:100'],
                 'data_nascimento'=>['required','date'],
-                'fotografia'=>['nullable','image','max:2000'],
+                'fotografia'=>['image','nullable','max:2000'],
             ]);
+            if($req->hasFile('fotografia')){
+                $nomeFotografia = $req->file('fotografia')->getClientOriginalName();
+    
+                $nomeFotografia= time().'_'.$nomeFotografia;
+                $guardarFotografia = $req->file('fotografia')->storeAs('imagens/musicos',$nomeFotografia);
+    
+                if(!is_null($fotografiaAntiga)){
+                    Storage::Delete('imagens/musicos/'.$fotografiaAntiga);
+                }
+    
+                $updateMusico['fotografia']=$nomeFotografia;
+            }
+           
             $musico->update($updateMusico);
+
 
             return redirect()->route('musicos.show',[
                 'id' => $musico->id_musico
@@ -104,6 +128,7 @@ class MusicosController extends Controller
     public function delete(Request $req){
         $idMusico = $req ->id;
         $musico = Musico::where('id_musico',$idMusico)->with(['albuns', 'musica'])->first();
+
         if(Gate::allows('admin')){
             if(is_null($musico)){
                 return redirect()->route('musicos.index')

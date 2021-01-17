@@ -13,6 +13,8 @@
 @endif
 <b>Genero: </b>{{$musica->genero->designacao}}<br>
 
-<a href="{{route('musicas.edit', ['id'=>$musica->id_musica])}}" class="btn btn-secondary">Editar Musica</a>
-<a href="{{route('musicas.delete', ['id'=>$musica->id_musica])}}" class="btn btn-secondary">Eliminar Musica</a>
+   @if(auth()->check())
+         <a href="{{route('musicas.edit', ['id'=>$musica->id_musica])}}" class="btn btn-secondary">Editar Musica</a>
+         <a href="{{route('musicas.delete', ['id'=>$musica->id_musica])}}" class="btn btn-secondary">Eliminar Musica</a>
+   @endif  
 @endsection

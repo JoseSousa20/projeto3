@@ -19,7 +19,7 @@ Data de Nascimento: (<b sytle="color:red">*</b>) <input type="date" name="data_n
 <b style="color:red">Formato de data incorreto(DD-MM-AAAA)</b><br>
 @endif
 
-Fotografia: <input type="file" name="fotografia" value="{{old('fotografia')}}"><br><br>
+Fotografia: <input type="file" name="fotografia" value="{{$musico->fotografia}}"><br><br>
 @if($errors->has('fotografia'))
 <b style="color:red">Fotografia inválida</b><br>
 @endif

@@ -39,4 +39,12 @@ class Musica extends Model
         'id_musico',
         'id_album'
     ];
+
+
+    public function user(){
+        return $this->belongsTo(
+            'App\Models\User', 
+            'id_user'
+        ); 
+    }
 }

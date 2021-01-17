@@ -14,5 +14,7 @@ Generos:
 </li>
 @endforeach
 <br>
+@if(auth()->check())
 <a href="{{route('generos.create')}}" class="btn btn-secondary">Adicionar Genero</a>
+@endif
 @endsection

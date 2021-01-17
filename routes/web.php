@@ -127,7 +127,7 @@ Route::get('/generos/{id}/edit', 'App\Http\Controllers\GenerosController@edit')
     ->name('generos.edit')->middleware('auth');
 
 Route::patch('/generos/{id}', 'App\Http\Controllers\GenerosController@update')
-    ->name('generos.update'->middleware('auth'));
+    ->name('generos.update')->middleware('auth');
 
 
 Route::get('/generos/{id}/delete', 'App\Http\Controllers\GenerosController@delete')

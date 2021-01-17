@@ -14,9 +14,17 @@
  @foreach($musico->musica as $musica)
     <b>Musicas: </b><a style="color:#000000" href="{{route('musicas.show',['id'=>$musica->id_musica])}}">{{$musica->titulo}}</a><br>
  @endforeach
+ @if($musico->fotografia != NULL)
+    <b>Fotografia: </b><br>
+    <img src="{{asset('imagens/musicos/' .$musico->fotografia)}}" width="200px"><br>
+@else
+    <b>Fotografia:</b> Inexistente<br>
+@endif
 <b>Created_at: </b>{{$musico->created_at}}<br>
 <b>Updated_at: </b>{{$musico->updated_at}}<br>
 <br>
+@if(auth()->check())
 <a href="{{route('musicos.edit', ['id'=>$musico->id_musico])}}" class="btn btn-secondary">Editar Musico</a>
 <a href="{{route('musicos.delete', ['id'=>$musico->id_musico])}}" class="btn btn-secondary">Eliminar Musico</a>
+@endif
 @endsection
